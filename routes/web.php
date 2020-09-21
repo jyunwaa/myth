@@ -14,10 +14,10 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/test', function () {
-    $password = '456';
-    $password_hash = \Illuminate\Support\Facades\Hash::make($password);
-    dump($password_hash);
-    dump(strlen($password_hash));
-    $check = \Illuminate\Support\Facades\Hash::check($password . '2', $password_hash);
-    dump($check);
+
+});
+
+Route::prefix('role')->group(function () {
+    Route::get('register', [\App\Http\Controllers\Role\RegisterController::class, 'index']);
+    Route::post('register/store', [\App\Http\Controllers\Role\RegisterController::class, 'store']);
 });
